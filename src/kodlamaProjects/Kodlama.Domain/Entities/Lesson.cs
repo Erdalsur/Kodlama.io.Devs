@@ -9,7 +9,7 @@ namespace Kodlama.Domain.Entities
 {
     public class Lesson:Entity
     {
-        public Lesson()
+        public Lesson() //Programlama Dili Olarak Değişecek
         {
         }
 
