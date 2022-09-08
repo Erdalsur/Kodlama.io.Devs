@@ -15,5 +15,9 @@
     <ProjectReference Include="..\..\corePackages\Core.Persistence\Core.Persistence.csproj" />
     <ProjectReference Include="..\Kodlama.Domain\Kodlama.Domain.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\ProgrammingTechnologies\Command\CreatedProgrammingLanguage\" />
+    <Folder Include="Features\ProgrammingTechnologies\Rules\" />
+  </ItemGroup>
 
 </Project>

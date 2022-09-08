@@ -16,6 +16,7 @@ namespace Kodlama.Persistence
                                                      options.UseSqlServer(
                                                          configuration.GetConnectionString("KodlamaCampConnectionString")));
             services.AddScoped<ILessonRepository, LessonRepository>();
+            services.AddScoped<IProgrammingTechnologyRepository, ProgrammingTechnologyRepository>();
 
             return services;
         }

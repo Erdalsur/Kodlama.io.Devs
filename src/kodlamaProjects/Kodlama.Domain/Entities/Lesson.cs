@@ -21,6 +21,6 @@ namespace Kodlama.Domain.Entities
 
         public string Name { get; set; }
 
-
+        public ICollection<ProgrammingTechnology> ProgrammingTechnologies { get; set; }
     }
 }
