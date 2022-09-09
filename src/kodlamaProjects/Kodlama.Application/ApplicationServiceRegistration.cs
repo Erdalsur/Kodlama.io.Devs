@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Kodlama.Application.Features.Lessons.Rules;
 using Kodlama.Application.Features.ProgrammingTechnologies.Rules;
+using Kodlama.Application.Features.AppAuthorizations.Rules;
 
 namespace Kodlama.Application
 {
@@ -23,6 +24,7 @@ namespace Kodlama.Application
 
             services.AddScoped<LessonBusinessRules>();
             services.AddScoped<ProgrammingTechnologyBusinessRules>();
+            services.AddScoped<AppAuthorizationBusinessRules>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             

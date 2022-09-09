@@ -1,4 +1,5 @@
-﻿using Kodlama.Domain.Entities;
+﻿using Core.Security.Entities;
+using Kodlama.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -12,8 +13,15 @@ namespace Kodlama.Persistence.Contexts
     public class BaseDbContext : DbContext
     {
         protected IConfiguration Configuration { get; set; }
+
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<ProgrammingTechnology> ProgrammingTechnologies { get; set; }
+
+        //Authorization User
+        public DbSet<User> Users { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+        
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
@@ -29,6 +37,36 @@ namespace Kodlama.Persistence.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>(a =>
+            {
+                a.ToTable("Users").HasKey(k => k.Id);
+                a.Property(a => a.Id).HasColumnName("Id");
+                a.Property(a => a.FirstName).HasColumnName("FirstName");
+                a.Property(a => a.LastName).HasColumnName("LastName");
+                a.Property(a => a.Email).HasColumnName("Email");
+                a.Property(a => a.PasswordHash).HasColumnName("PasswordHash");
+                a.Property(a => a.PasswordSalt).HasColumnName("PasswordSalt");
+                a.Property(a => a.Status).HasColumnName("Status");
+                a.Property(a => a.AuthenticatorType).HasColumnName("AuthenticatorType");
+                a.HasMany(a => a.UserOperationClaims);
+                a.HasMany(a => a.RefreshTokens);
+
+            });
+            modelBuilder.Entity<OperationClaim>(a => 
+            {
+                a.ToTable("OperationClaim").HasKey(k => k.Id);
+                a.Property(a => a.Id).HasColumnName("Id");
+                a.Property(a => a.Name).HasColumnName("Name");
+            });
+            modelBuilder.Entity<UserOperationClaim>(a=>
+            {
+                a.ToTable("UserOperationClaim").HasKey(k => k.Id);
+                a.Property(a => a.Id).HasColumnName("Id");
+                a.Property(a => a.UserId).HasColumnName("UserId");
+                a.Property(a => a.OperationClaimId).HasColumnName("OperationClaimId");
+                a.HasOne(a => a.User);
+                a.HasOne(a => a.OperationClaim);
+            });
             modelBuilder.Entity<Lesson>(a =>
             {
                 a.ToTable("Lessons").HasKey(k => k.Id);

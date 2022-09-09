@@ -17,7 +17,7 @@ namespace Kodlama.Persistence
                                                          configuration.GetConnectionString("KodlamaCampConnectionString")));
             services.AddScoped<ILessonRepository, LessonRepository>();
             services.AddScoped<IProgrammingTechnologyRepository, ProgrammingTechnologyRepository>();
-
+            services.AddScoped<IUserRepository, UserRepository>();
             return services;
         }
     }
