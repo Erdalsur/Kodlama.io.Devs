@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -14,9 +14,6 @@
     <ProjectReference Include="..\..\corePackages\Core.Application\Core.Application.csproj" />
     <ProjectReference Include="..\..\corePackages\Core.Persistence\Core.Persistence.csproj" />
     <ProjectReference Include="..\Kodlama.Domain\Kodlama.Domain.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Features\ProgrammingTechnologies\Command\CreatedProgrammingTechnology\" />
   </ItemGroup>
 
 </Project>

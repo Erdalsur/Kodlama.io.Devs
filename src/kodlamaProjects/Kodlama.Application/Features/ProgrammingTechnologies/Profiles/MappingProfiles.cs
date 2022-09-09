@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Core.Persistence.Paging;
 using Kodlama.Application.Features.Lessons.Commands.DeletedLesson;
+using Kodlama.Application.Features.ProgrammingTechnologies.Command.CreatedProgrammingTechnology;
 using Kodlama.Application.Features.ProgrammingTechnologies.Command.UpdateProgrammingTechnology;
 using Kodlama.Application.Features.ProgrammingTechnologies.Dtos;
 using Kodlama.Application.Features.ProgrammingTechnologies.Models;
@@ -24,6 +25,8 @@ namespace Kodlama.Application.Features.ProgrammingTechnologies.Profiles
             CreateMap<ProgrammingTechnology, UpdatedPrgrammingTechnologyDto>().ReverseMap();
             CreateMap<ProgrammingTechnology, UpdateProgrammingTechnologyCommand>().ReverseMap();
             CreateMap<ProgrammingTechnology, DeletedByIdLessonCommand>().ReverseMap();
+            CreateMap<ProgrammingTechnology, CreatedPrgrammingTechnologyDto>().ReverseMap();
+            CreateMap<ProgrammingTechnology, CreatedProgrammingTechnologyCommand>().ReverseMap();
             CreateMap<IPaginate<ProgrammingTechnology>, ProgrammingTechnologyListModel>().ReverseMap();
         }
     }

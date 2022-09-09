@@ -1,5 +1,8 @@
 ﻿using Core.Application.Requests;
 using Core.Persistence.Dynamic;
+using Kodlama.Application.Features.Lessons.Commands.CreatedLesson;
+using Kodlama.Application.Features.Lessons.Dtos;
+using Kodlama.Application.Features.ProgrammingTechnologies.Command.CreatedProgrammingTechnology;
 using Kodlama.Application.Features.ProgrammingTechnologies.Command.DeletedProgrammingTechnology;
 using Kodlama.Application.Features.ProgrammingTechnologies.Command.UpdateProgrammingTechnology;
 using Kodlama.Application.Features.ProgrammingTechnologies.Dtos;
@@ -43,6 +46,13 @@ namespace Kodlama.WebAPI.Controllers
         {
             DeletedPrgrammingTechnologyDto result = await Mediator.Send(deletedByIdProgrammingTechnologyCommand);
             return Ok(result);
+        }
+
+        [HttpPost("Add")]
+        public async Task<IActionResult> Add([FromBody] CreatedProgrammingTechnologyCommand createdProgrammingTechnologyCommand)
+        {
+            CreatedPrgrammingTechnologyDto result = await Mediator.Send(createdProgrammingTechnologyCommand);
+            return Created("", result);
         }
     }
 }
