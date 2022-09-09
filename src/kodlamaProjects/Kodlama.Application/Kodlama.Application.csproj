@@ -16,8 +16,8 @@
     <ProjectReference Include="..\Kodlama.Domain\Kodlama.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Features\ProgrammingTechnologies\Command\CreatedProgrammingLanguage\" />
-    <Folder Include="Features\ProgrammingTechnologies\Rules\" />
+    <Folder Include="Features\ProgrammingTechnologies\Command\CreatedProgrammingTechnology\" />
+    <Folder Include="Features\ProgrammingTechnologies\Command\UpdateProgrammingTechnology\" />
   </ItemGroup>
 
 </Project>

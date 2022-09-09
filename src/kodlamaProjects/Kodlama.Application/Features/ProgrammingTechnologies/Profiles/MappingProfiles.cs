@@ -18,6 +18,7 @@ namespace Kodlama.Application.Features.ProgrammingTechnologies.Profiles
             CreateMap<ProgrammingTechnology, ProgrammingTechnologyListDto>()
                 .ForMember(a=>a.LessonName, opt=>opt.MapFrom(m=>m.Lesson.Name))
                 .ReverseMap();
+            CreateMap<ProgrammingTechnology, DeletedPrgrammingTechnologyDto>().ReverseMap();
             CreateMap<IPaginate<ProgrammingTechnology>, ProgrammingTechnologyListModel>().ReverseMap();
         }
     }
