@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Kodlama.Application.Features.Lessons.Rules;
+using Kodlama.Application.Features.ProgrammingTechnologies.Rules;
 
 namespace Kodlama.Application
 {
@@ -21,6 +22,7 @@ namespace Kodlama.Application
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddScoped<LessonBusinessRules>();
+            services.AddScoped<ProgrammingTechnologyBusinessRules>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             

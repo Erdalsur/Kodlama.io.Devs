@@ -17,7 +17,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\ProgrammingTechnologies\Command\CreatedProgrammingTechnology\" />
-    <Folder Include="Features\ProgrammingTechnologies\Command\UpdateProgrammingTechnology\" />
   </ItemGroup>
 
 </Project>

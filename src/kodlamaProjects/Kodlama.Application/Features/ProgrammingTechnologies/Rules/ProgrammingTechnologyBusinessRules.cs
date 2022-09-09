@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Kodlama.Application.Features.ProgrammingTechnologies.Rules
 {
+    
     public class ProgrammingTechnologyBusinessRules
     {
         private readonly IProgrammingTechnologyRepository _programmingTechnologyRepository;
@@ -24,6 +25,11 @@ namespace Kodlama.Application.Features.ProgrammingTechnologies.Rules
             IPaginate<ProgrammingTechnology> result = await _programmingTechnologyRepository.GetListAsync(a => a.Name == name);
             if (result.Items.Any()) throw new BusinessException("Programming Technology name exists.");
 
+        }
+
+        public void ProgrammingTechnologyLessonIdShouldExistWhenRequested(int id)
+        {
+            if (id == null | id < 1) throw new BusinessException("Request LessonId does not exists.");
         }
 
         public void ProgrammingTechnologyShouldExistWhenRequested(ProgrammingTechnology programmingTechnology)
