@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Kodlama.Application.Features.Lessons.Rules;
 using Kodlama.Application.Features.ProgrammingTechnologies.Rules;
 using Kodlama.Application.Features.AppAuthorizations.Rules;
+using Core.Application.Pipelines.Authorization;
 
 namespace Kodlama.Application
 {
@@ -27,7 +28,8 @@ namespace Kodlama.Application
             services.AddScoped<AppAuthorizationBusinessRules>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
             return services;
