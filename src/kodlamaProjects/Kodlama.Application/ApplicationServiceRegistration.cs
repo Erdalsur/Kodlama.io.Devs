@@ -12,6 +12,7 @@ using Kodlama.Application.Features.Lessons.Rules;
 using Kodlama.Application.Features.ProgrammingTechnologies.Rules;
 using Kodlama.Application.Features.AppAuthorizations.Rules;
 using Core.Application.Pipelines.Authorization;
+using Kodlama.Application.Features.GitHubProfiles.Rules;
 
 namespace Kodlama.Application
 {
@@ -26,6 +27,7 @@ namespace Kodlama.Application
             services.AddScoped<LessonBusinessRules>();
             services.AddScoped<ProgrammingTechnologyBusinessRules>();
             services.AddScoped<AppAuthorizationBusinessRules>();
+            services.AddScoped<GitHubProfileBussinesRules>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
