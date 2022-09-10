@@ -3,13 +3,13 @@ using Core.Security.Entities;
 
 namespace Kodlama.Domain.Entities
 {
-    public class AppUser:Entity
+    public class GitHubProfile:Entity
     {
-        public AppUser()
+        public GitHubProfile()
         {
         }
 
-        public AppUser(int id,int userId, User user, string? gitHubUrl):base(id)
+        public GitHubProfile(int id,int userId, User user, string? gitHubUrl):base(id)
         {
             Id = id;
             UserId = userId;

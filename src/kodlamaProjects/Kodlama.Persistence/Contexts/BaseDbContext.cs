@@ -17,6 +17,8 @@ namespace Kodlama.Persistence.Contexts
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<ProgrammingTechnology> ProgrammingTechnologies { get; set; }
 
+        public DbSet<GitHubProfile> GitHubProfiles { get; set; }
+
         //Authorization User
         public DbSet<User> Users { get; set; }
         public DbSet<OperationClaim> OperationClaims { get; set; }
@@ -66,6 +68,15 @@ namespace Kodlama.Persistence.Contexts
                 a.Property(a => a.OperationClaimId).HasColumnName("OperationClaimId");
                 a.HasOne(a => a.User);
                 a.HasOne(a => a.OperationClaim);
+            });
+
+            modelBuilder.Entity<GitHubProfile>(a =>
+            {
+                a.ToTable("GitHubProfile").HasKey(k => k.Id);
+                a.Property(a => a.Id).HasColumnName("Id");
+                a.Property(a => a.UserId).HasColumnName("UserId");
+                a.Property(a => a.GitHubUrl).HasColumnName("GitHubUrl");
+                a.HasOne(a => a.User);
             });
             modelBuilder.Entity<Lesson>(a =>
             {

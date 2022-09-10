@@ -35,6 +35,8 @@ namespace Kodlama.Application.Features.AppAuthorizations.Commands.LoginUser
             public async Task<UserDto> Handle(LoginUserCommand request, CancellationToken cancellationToken)
             {
 
+                await _appAuthorizationBusinessRules.ThereIsNoAccountRegisteredForThisEmailAddress(request.Email);
+
                 User user = await _userRepository.GetAsync(a => a.Email == request.Email);
                 await _appAuthorizationBusinessRules.VerifyPassword(request.Password, user);
 

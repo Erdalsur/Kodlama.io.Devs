@@ -33,5 +33,12 @@ namespace Kodlama.Application.Features.AppAuthorizations.Rules
                 throw new Exception("The Password you entered is Incorrect.");
             }
         }
+        public async Task ThereIsNoAccountRegisteredForThisEmailAddress(string email)
+        {
+            User? user = await _userRepository.GetAsync(u => u.Email == email);
+            if (user == null) throw new BusinessException("There is no account registered for this Email Address");
+        }
+
+
     }
 }
