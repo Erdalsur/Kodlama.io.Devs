@@ -58,8 +58,7 @@ namespace Kodlama.Application.Features.AppAuthorizations.Commands.RegisterUser
                 List<OperationClaim> operationClaims = _userRepository.GetOperationClaims(createdUser).ToList();
                 AccessToken accessToken=_tokenHelper.CreateToken(user, operationClaims);
                 UserDto result = _mapper.Map<UserDto>(createdUser);
-                result.Expiration = accessToken.Expiration;
-                result.Token = accessToken.Token;
+                result.AccessToken = accessToken;
                 return result;
                 
             }

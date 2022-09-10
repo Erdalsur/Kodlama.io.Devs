@@ -6,11 +6,13 @@ using Kodlama.Application.Features.Lessons.Dtos;
 using Kodlama.Application.Features.Lessons.Models;
 using Kodlama.Application.Features.Lessons.Queries.GetByIdLesson;
 using Kodlama.Application.Features.Lessons.Queries.GetListLesson;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kodlama.WebAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class LessonsController : BaseController

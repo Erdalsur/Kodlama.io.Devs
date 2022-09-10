@@ -1,6 +1,7 @@
 ﻿using Core.CrossCuttingConcerns.Exceptions;
 using Core.Persistence.Paging;
 using Core.Security.Entities;
+using Core.Security.Hashing;
 using Kodlama.Application.Services.Repositories;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,12 @@ namespace Kodlama.Application.Features.AppAuthorizations.Rules
             if (result.Items.Any()) throw new BusinessException("This Email Address Already Has An Account");
         }
 
-
-
+        public async Task VerifyPassword(string password, User? user)
+        {
+            if (!HashingHelper.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+            {
+                throw new Exception("The Password you entered is Incorrect.");
+            }
+        }
     }
 }
