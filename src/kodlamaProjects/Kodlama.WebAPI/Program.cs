@@ -50,7 +50,7 @@ if (app.Environment.IsDevelopment())
 if (app.Environment.IsProduction())
   app.ConfigureCustomExceptionMiddleware();
 
-//app.UseAuthentication();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
