@@ -13,6 +13,8 @@ using Kodlama.Application.Features.ProgrammingTechnologies.Rules;
 using Kodlama.Application.Features.AppAuthorizations.Rules;
 using Core.Application.Pipelines.Authorization;
 using Kodlama.Application.Features.GitHubProfiles.Rules;
+using Kodlama.Application.Services.AuthService;
+using Kodlama.Application.Features.Auths.Rules;
 
 namespace Kodlama.Application
 {
@@ -28,12 +30,14 @@ namespace Kodlama.Application
             services.AddScoped<ProgrammingTechnologyBusinessRules>();
             services.AddScoped<AppAuthorizationBusinessRules>();
             services.AddScoped<GitHubProfileBussinesRules>();
+            services.AddScoped<AuthBusinessRules>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
+            services.AddScoped<IAuthService, AuthManager>();
             return services;
 
         }

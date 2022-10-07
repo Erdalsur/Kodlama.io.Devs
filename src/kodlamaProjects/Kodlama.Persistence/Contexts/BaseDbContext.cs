@@ -23,7 +23,8 @@ namespace Kodlama.Persistence.Contexts
         public DbSet<User> Users { get; set; }
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
-        
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
@@ -68,6 +69,21 @@ namespace Kodlama.Persistence.Contexts
                 a.Property(a => a.OperationClaimId).HasColumnName("OperationClaimId");
                 a.HasOne(a => a.User);
                 a.HasOne(a => a.OperationClaim);
+            });
+            modelBuilder.Entity<RefreshToken>(a=>
+            {
+                a.ToTable("RefreshTokens").HasKey(k => k.Id);
+                a.Property(a => a.Id).HasColumnName("Id");
+                a.Property(a => a.UserId).HasColumnName("UserId");
+                a.Property(a => a.Token).HasColumnName("Token");
+                a.Property(a => a.Expires).HasColumnName("Expires");
+                a.Property(a => a.Created).HasColumnName("Created");
+                a.Property(a => a.CreatedByIp).HasColumnName("CreatedByIp");
+                a.Property(a => a.Revoked).HasColumnName("Revoked");
+                a.Property(a => a.RevokedByIp).HasColumnName("RevokedByIp");
+                a.Property(a => a.ReplacedByToken).HasColumnName("ReplacedByToken");
+                a.Property(a => a.ReasonRevoked).HasColumnName("ReasonRevoked");
+                a.HasOne(a => a.User);
             });
 
             modelBuilder.Entity<GitHubProfile>(a =>
