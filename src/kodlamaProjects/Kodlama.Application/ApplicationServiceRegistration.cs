@@ -16,6 +16,7 @@ using Kodlama.Application.Features.GitHubProfiles.Rules;
 using Kodlama.Application.Services.AuthService;
 using Kodlama.Application.Features.Auths.Rules;
 using Kodlama.Application.Features.OperationClaims.Rules;
+using Kodlama.Application.Features.UserOperationClaims.Rules;
 
 namespace Kodlama.Application
 {
@@ -33,6 +34,7 @@ namespace Kodlama.Application
             services.AddScoped<GitHubProfileBussinesRules>();
             services.AddScoped<AuthBusinessRules>();
             services.AddScoped<OperationClaimBusinessRules>();
+            services.AddScoped<UserOperationClaimBusinessRules>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
