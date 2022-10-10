@@ -1,4 +1,5 @@
-﻿using Core.Security.Entities;
+﻿using Core.Application.Pipelines.Authorization;
+using Core.Security.Entities;
 using Kodlama.Application.Features.OperationClaims.Dtos;
 using Kodlama.Application.Features.OperationClaims.Rules;
 using Kodlama.Application.Services.Repositories;
@@ -8,12 +9,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Kodlama.Application.Features.OperationClaims.Constants.OperationClaims;
+using static Kodlama.Domain.Constants.OperationClaims;
 
 namespace Kodlama.Application.Features.OperationClaims.Commands.CreateOperationClaim
 {
-    public class CreateOperationClaimCommand : IRequest<CreatedOperationClaimDto>
+    public class CreateOperationClaimCommand : IRequest<CreatedOperationClaimDto>, ISecuredRequest
     {
         public string Name { get; set; }
+
+        public string[] Roles => new[] { Admin, OperationClaimAdd };
 
         public class CreateOperationClaimCommandHandler : IRequestHandler<CreateOperationClaimCommand, CreatedOperationClaimDto>
         {
